@@ -1,0 +1,234 @@
+/*
+*general styling
+*/
+
+*, *::before, *::after{
+	box-sizing: border-box;
+}
+
+body, p, span {
+	color: rgb(109, 172, 226);
+	font-family: 'Open Sans', sans-serif;
+	fill: currentColor;
+}
+
+.container {
+	display: flex;
+}
+
+.tshirt {
+	padding:2rem;
+	flex-grow:1;
+}
+
+/*
+*main display
+*/
+
+.image-container {
+	position: relative;
+	border: 1px solid currentColor;
+	border-bottom: none;
+	transition: transform 1s ease all;
+}
+
+.image-container #front, #back {
+	width:100%;
+	height:20vw;
+	backface-visibility:hidden;
+	display: block;
+	transition: all 1s ease;
+}
+
+.image-container #rotator {
+	fill: rgb(109, 172, 226);
+	width:10%;
+	height:10%;
+	position:absolute;
+	top:0;
+	right:0;
+	border-left: 1px solid currentColor;
+	border-bottom: 1px solid currentColor;
+	padding:.2vw;
+}
+
+.image-container #back {
+	position: absolute;
+	top:0;
+	left:0;
+	transform:rotateY(180deg);
+}
+
+.image-container input {
+	position: absolute;
+	top:0;
+	right:0;
+	opacity:0;
+	z-index:1;
+}
+
+.tshirt:nth-child(2) > .image-container > svg {
+	fill: rgb(202, 105, 154);
+}
+
+.tshirt:nth-child(3) > .image-container > svg {
+	fill: rgb(210, 159, 100);
+}
+
+/*
+*bottom bar
+*/
+
+.bottombar {
+	display: flex;
+}
+
+.bottombar > * {
+	border: 1px solid currentColor;
+	flex-grow:1;
+	position: relative;
+	transition: transform .5s ease all;
+}
+
+.bottombar > *::after {
+	content:"";
+	display:block;
+	padding-top:100%;
+}
+
+.icon {
+	position: absolute;
+	top:50%;
+	left:50%;
+	transform: translate(-50%, -50%);
+	width:50%;
+	height:50%;
+	font-size:1.75vw;
+	font-weight: 600;
+	text-align: center;
+	overflow: auto;
+}
+
+.bottombar >div:nth-child(4)>.icon{
+	background-color: currentColor;
+	border: .3vw solid white;
+}
+
+.tshirt:nth-child(2) > .bottombar > div:nth-child(4)>.icon{
+	background-color: rgb(202, 105, 154);
+	border: .3vw solid white;
+}
+
+.tshirt:nth-child(3) > .bottombar > div:nth-child(4)>.icon{
+	background-color: rgb(210, 159, 100);
+	border: .3vw solid white;
+}
+
+/*
+*hovermenu
+*/
+
+.hover-menu {
+	position:absolute;
+	bottom:100%;
+	left:50%;
+	transform: translate(-50%, -2vw);
+	background-color: white;
+	border: 1px solid currentColor;
+	opacity:0;
+	transition: all 0.5s ease;
+	pointer-events:none;
+}
+
+.sizes > p {
+	text-align: center;
+	text-indent: 0;
+	font-size: 1.8vw;
+	font-weight: 600;
+	margin: 0 1vw 0 1vw;
+}
+
+.colors div {
+	display: flex;
+}
+
+.colors span {
+	flex-grow:1;
+	padding: 1.3vw;
+	margin: .6vw;
+}
+
+.colors span::after{
+	content="";
+	display:block;
+	padding-top: 100%; 
+}
+
+.colors > div:nth-child(1) > span:nth-child(1) {
+	background-color: currentColor;
+}
+
+.colors > div:nth-child(1) > span:nth-child(2) {
+	background-color: rgb(202, 105, 154);
+}
+
+.colors > div:nth-child(2) > span:nth-child(1) {
+	background-color: rgb(210, 159, 100);
+}
+
+.colors > div:nth-child(2) > span:nth-child(2) {
+	background-color: rgb(120, 174, 126);
+}
+
+/*
+*animations
+*/
+
+.bottombar > *:hover {
+	background-color: currentColor;
+	border-radius: 15%;
+}
+
+.bottombar > *:hover .hover-menu {
+	opacity:1;
+	transform: translate(-50%, 0vw);
+	pointer-events:inherit;
+}
+
+.bottombar > *:hover .icon {
+	fill:white;
+}
+
+.bottombar > *:hover > p {
+	color: white;
+}
+
+#rotator:hover {
+	background-color: currentColor;
+	fill: white;
+}
+
+input:checked ~ #front {
+	transform: rotateY(180deg);
+}
+
+input[type="checkbox"]:checked ~ #back {
+	transform: rotateY(360deg);
+}
+
+/*
+*tshirt name and price
+*/
+
+.description {
+	font-size: 1.9vw;
+}
+
+.description > p > span {
+	float:right;
+	font-weight: 700;
+}
+
+.description > p {
+	padding-top: 1vw;
+}
